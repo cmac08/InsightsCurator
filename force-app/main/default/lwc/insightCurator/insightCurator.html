@@ -1,32 +1,66 @@
 <template>
-    <lightning-card title="Insight Curator">
-        <div class="slds-p-around_medium">
-            <lightning-input
-                label="Ask a question"
-                value={query}
-                onchange={handleInputChange}
-                placeholder="e.g., Show me insights for accounts in manufacturing with recent interest in credit products"
-            ></lightning-input>
+    <lightning-card title="Insight Curator" icon-name="custom:custom63">
+        <div class="slds-p-around_medium slds-grid slds-gutters">
+            <div class="slds-col slds-size_1-of-1">
+                <lightning-textarea
+                    label="Describe what you want to find"
+                    value={prompt}
+                    onchange={handlePromptChange}
+                    placeholder="e.g., Show open insights with likelihood >= 0.7 for EDGE Product X sorted by rank"
+                >
+                </lightning-textarea>
+            </div>
+        </div>
 
-            <lightning-button
-                label="Search Insights"
-                variant="brand"
-                onclick={handleQuerySubmit}
-                class="slds-m-top_medium"
-            ></lightning-button>
+        <div class="slds-p-horizontal_medium slds-p-bottom_medium slds-grid slds-wrap slds-gutters">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                <lightning-input
+                    type="text"
+                    label="Model (optional)"
+                    value={modelName}
+                    onchange={handleModelChange}
+                    placeholder="gpt-4o-mini (optional)"
+                ></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-align_absolute-center slds-p-top_large">
+                <lightning-button
+                    variant="brand"
+                    label="Run"
+                    title="Run"
+                    onclick={handleSubmit}
+                    disabled={loading}
+                ></lightning-button>
+            </div>
         </div>
 
         <template if:true={loading}>
-            <lightning-spinner alternative-text="Loading insights..." size="medium"></lightning-spinner>
+            <div class="slds-p-around_medium slds-align_absolute-center">
+                <lightning-spinner alternative-text="Processing..." size="medium"></lightning-spinner>
+            </div>
         </template>
 
-        <template if:true={insights.length}>
+        <template if:true={error}>
             <div class="slds-p-around_medium">
-                <template for:each={insights} for:item="insight">
-                    <lightning-card key={insight.id} title={insight.title}>
-                        <p class="slds-p-horizontal_medium">{insight.summary}</p>
-                    </lightning-card>
-                </template>
+                <div class="slds-text-color_error">{error}</div>
+            </div>
+        </template>
+
+        <template if:true={data}>
+            <div class="slds-p-around_medium">
+                <lightning-datatable
+                    key-field="Id"
+                    data={data}
+                    columns={columns}
+                    hide-checkbox-column
+                    show-row-number-column
+                >
+                </lightning-datatable>
+            </div>
+        </template>
+
+        <template if:true={data}>
+            <div class="slds-p-horizontal_medium slds-p-bottom_medium slds-text-title_caps slds-text-color_weak">
+                {data.length} results
             </div>
         </template>
     </lightning-card>
