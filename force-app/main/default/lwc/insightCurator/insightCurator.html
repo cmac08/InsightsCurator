@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Insight Curator">
+        <div class="slds-p-around_medium">
+            <lightning-input
+                label="Ask a question"
+                value={query}
+                onchange={handleInputChange}
+                placeholder="e.g., Show me insights for accounts in manufacturing with recent interest in credit products"
+            ></lightning-input>
+
+            <lightning-button
+                label="Search Insights"
+                variant="brand"
+                onclick={handleQuerySubmit}
+                class="slds-m-top_medium"
+            ></lightning-button>
+        </div>
+
+        <template if:true={loading}>
+            <lightning-spinner alternative-text="Loading insights..." size="medium"></lightning-spinner>
+        </template>
+
+        <template if:true={insights.length}>
+            <div class="slds-p-around_medium">
+                <template for:each={insights} for:item="insight">
+                    <lightning-card key={insight.id} title={insight.title}>
+                        <p class="slds-p-horizontal_medium">{insight.summary}</p>
+                    </lightning-card>
+                </template>
+            </div>
+        </template>
+    </lightning-card>
+</template>
