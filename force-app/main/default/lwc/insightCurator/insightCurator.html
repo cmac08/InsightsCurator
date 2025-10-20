@@ -41,7 +41,10 @@
 
         <template if:true={error}>
             <div class="slds-p-around_medium">
-                <div class="slds-text-color_error">{error}</div>
+                <div class="slds-notify slds-notify_alert slds-theme_error" role="alert">
+                    <span class="slds-assistive-text">Error</span>
+                    <p>{error}</p>
+                </div>
             </div>
         </template>
 

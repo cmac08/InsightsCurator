@@ -34,7 +34,24 @@ export default class InsightCurator extends LightningElement {
             const result = await processPrompt({ prompt: this.prompt, modelName: this.modelName });
             this.data = result || [];
         } catch (e) {
-            this.error = e && e.body && e.body.message ? e.body.message : (e && e.message ? e.message : 'Unknown error');
+            // Enhanced error handling for better debugging
+            if (e && e.body && e.body.message) {
+                // Check for authentication-related errors
+                if (e.body.message.includes('bearer') || e.body.message.includes('authentication')) {
+                    this.error = 'Authentication error: Please verify your OpenAI API key is correctly configured in External Credentials.';
+                } else {
+                    this.error = e.body.message;
+                }
+            } else if (e && e.message) {
+                // Check for common authentication errors
+                if (e.message.includes('bearer') || e.message.includes('authentication')) {
+                    this.error = 'Authentication error: Please verify your OpenAI API key is correctly configured in External Credentials.';
+                } else {
+                    this.error = e.message;
+                }
+            } else {
+                this.error = 'An unknown error occurred while processing your request.';
+            }
         } finally {
             this.loading = false;
         }

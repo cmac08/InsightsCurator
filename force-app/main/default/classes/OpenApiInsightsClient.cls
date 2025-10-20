@@ -53,7 +53,7 @@ public with sharing class OpenApiInsightsClient {
     }
 
     // Named Credential API name provided by user
-    private static final String NAMED_CREDENTIAL = 'OpenApi';
+    private static final String NAMED_CREDENTIAL = 'OpenAI';
     // Full path indicated by user: https://api.openai.com/v1/responses
     private static final String ENDPOINT = 'callout:' + NAMED_CREDENTIAL + '/v1/responses';
 
