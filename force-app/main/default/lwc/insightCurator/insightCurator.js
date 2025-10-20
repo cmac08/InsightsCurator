@@ -33,6 +33,7 @@ export default class InsightCurator extends LightningElement {
         try {
             const result = await processPrompt({ prompt: this.prompt, modelName: this.modelName });
             this.data = result || [];
+            console.log(this.data);
         } catch (e) {
             // Enhanced error handling for better debugging
             if (e && e.body && e.body.message) {

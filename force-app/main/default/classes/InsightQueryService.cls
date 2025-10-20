@@ -45,13 +45,15 @@ public with sharing class InsightQueryService {
             }
             incoming.filters = validFilters;
         }
-        if (incoming.range != null) {
-            if (!isAllowedField(incoming.range.field)) {
-                incoming.range = null;
+        // NOTE: Using range_x because 'range' is reserved in Apex
+        if (incoming.range_x != null) {
+            if (!isAllowedField(incoming.range_x.field)) {
+                incoming.range_x = null;
             }
         }
+        // NOTE: Using order_x in sortSpec because 'order' is reserved in Apex
         if (incoming.sortSpec != null) {
-            if (!isAllowedField(incoming.sortSpec.field) || !isAllowedSortOrder(incoming.sortSpec.order)) {
+            if (!isAllowedField(incoming.sortSpec.field) || !isAllowedSortOrder(incoming.sortSpec.order_x)) {
                 incoming.sortSpec = null;
             }
         }
@@ -99,12 +101,13 @@ public with sharing class InsightQueryService {
             }
         }
 
-        if (sq.range != null && !String.isBlank(sq.range.field)) {
-            if (sq.range.minValue != null) {
-                predicates.add(sq.range.field + ' >= ' + String.valueOf(sq.range.minValue));
+        // NOTE: Using range_x because 'range' is reserved in Apex
+        if (sq.range_x != null && !String.isBlank(sq.range_x.field)) {
+            if (sq.range_x.minValue != null) {
+                predicates.add(sq.range_x.field + ' >= ' + String.valueOf(sq.range_x.minValue));
             }
-            if (sq.range.maxValue != null) {
-                predicates.add(sq.range.field + ' <= ' + String.valueOf(sq.range.maxValue));
+            if (sq.range_x.maxValue != null) {
+                predicates.add(sq.range_x.field + ' <= ' + String.valueOf(sq.range_x.maxValue));
             }
         }
 
@@ -112,8 +115,10 @@ public with sharing class InsightQueryService {
             soql += ' WHERE ' + String.join(predicates, ' AND ');
         }
 
+        // NOTE: Using order_x because 'order' is reserved in Apex
         if (sq.sortSpec != null && !String.isBlank(sq.sortSpec.field)) {
-            soql += ' ORDER BY ' + sq.sortSpec.field + ' ' + (String.isBlank(sq.sortSpec.order) ? 'ASC' : sq.sortSpec.order);
+            String sortOrder = String.isBlank(sq.sortSpec.order_x) ? 'ASC' : sq.sortSpec.order_x;
+            soql += ' ORDER BY ' + sq.sortSpec.field + ' ' + sortOrder;
         }
 
         soql += ' LIMIT ' + String.valueOf(sq.maxLimit);
