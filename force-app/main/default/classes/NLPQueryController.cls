@@ -118,8 +118,8 @@ public with sharing class NLPQueryController {
     public static List<ModelOption> getAvailableModels() {
         return new List<ModelOption>{
             new ModelOption('GPT-4o Mini (Fast)', 'gpt-4o-mini', true),
-            // new ModelOption('GPT-4o Mini', 'gpt-4o-mini', false),
-            new ModelOption('GPT-4o', 'gpt-4o', false)
+            new ModelOption('GPT-4.1-nano', 'gpt-4.1-nano', false)
+            new ModelOption('GPT-5-nano	', 'gpt-5-nano', false),
         };
     }
     

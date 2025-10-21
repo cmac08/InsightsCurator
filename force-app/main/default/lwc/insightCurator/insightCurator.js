@@ -37,7 +37,7 @@ export default class insightCurator extends LightningElement {
             fieldName: 'accountUrl',
             type: 'url',
             typeAttributes: {
-                label: { fieldName: 'Account__r.Name' },
+                label: { fieldName: 'accountName' },
                 target: '_blank'
             },
             initialWidth: 150
@@ -236,9 +236,13 @@ export default class insightCurator extends LightningElement {
             // Create a copy of the record
             const enrichedRecord = { ...record };
 
-            // Add account URL for linking to the account record
+            // Add account URL and Name label for linking to the account record
             if (record.Account__c) {
                 enrichedRecord.accountUrl = '/lightning/r/Account/' + record.Account__c + '/view';
+            }
+            // Prefer relational name if provided by the query
+            if (record.Account__r && record.Account__r.Name) {
+                enrichedRecord.accountName = record.Account__r.Name;
             }
 
             // Add CSS classes based on Status

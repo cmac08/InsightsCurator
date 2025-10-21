@@ -272,6 +272,7 @@ public with sharing class InsightQueryService {
             
             // Custom fields - ONLY fields that actually exist in the org
             'Account__c',
+            'Account__r.Name',
             'EDGE_Product_Name__c',
             'Likelihood__c',
             'Estimated_Annual_Revenue__c',
