@@ -170,7 +170,7 @@ public with sharing class InsightFieldSchema {
             + '- For importance ranking: use Rank__c (numeric sorting)\n'
             + '- For date queries: use CreatedDate or LastModifiedDate with date literals (no quotes)\n'
             + '- Insight_Details__c is a long text field - it CANNOT be used in filters, only in the fields array\n\n'
-            + '⚠️ IMPORTANT:\n'
+            + ' IMPORTANT:\n'
             + '- When users ask about "banking", "commercial cards", "retail" - these are likely in EDGE_Product_Name__c\n'
             + '- Use EDGE_Product_Name__c with LIKE operator for product/industry filtering\n'
             + '- DO NOT filter on Insight_Details__c - Salesforce does not allow filtering long text fields\n'

@@ -283,9 +283,6 @@ public with sharing class InsightQueryService {
             'Status__c',
             'Insight_Details__c',
             'Category__c'
-            
-            // NOTE: Priority__c and Industry__c do NOT exist
-            // Users asking for "priority" or "industry" should use Status__c or Category__c
         };
         
         return allowedFields.contains(fieldName);
