@@ -230,9 +230,31 @@ export default class insightCurator extends LightningElement {
             this.errorMessage = error.body?.message || 
                                error.message || 
                                'An unexpected error occurred';
-            // Ensure the Generated Query panel still communicates failure
+            // Ensure the Generated Query panel still communicates failure and try to surface the attempted query
             this.lastQueryStatus = 'Failed';
-            this.generatedQuery = this.generatedQuery || result.query; // keep string type
+
+            // Attempt to extract the attempted/generated SOQL from common Apex error shapes.
+            // Fall back to any previously set value to keep string type stable.
+            const attemptedQuery =
+                error?.body?.details?.query ||
+                error?.body?.query ||
+                error?.query ||
+                // Some handlers may serialize extra info in message as JSON; try to parse safely
+                (() => {
+                    try {
+                        const maybeJson = JSON.parse(error?.body?.message ?? error?.message ?? '{}');
+                        return maybeJson?.query || null;
+                    } catch (e) {
+                        return null;
+                    }
+                })();
+
+            if (attemptedQuery) {
+                this.generatedQuery = attemptedQuery;
+            } else {
+                // Preserve any previously known generated query (if it was set before failure)
+                this.generatedQuery = this.generatedQuery || '';
+            }
             
             this.showToast(
                 'Query Failed',

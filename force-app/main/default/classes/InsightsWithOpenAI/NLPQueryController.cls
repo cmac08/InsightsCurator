@@ -22,6 +22,15 @@ public with sharing class NLPQueryController {
          
          System.debug('=== Structured Query Created ===');
          System.debug(JSON.serializePretty(structuredQuery));
+
+         // Prepare the attempted SOQL for success and error paths
+         String attemptedSOQL = '';
+         try {
+             attemptedSOQL = structuredQuery != null ? structuredQuery.toSOQL() : '';
+         } catch (Exception e) {
+             // If toSOQL throws for any reason, keep a serialized form of the structure
+             attemptedSOQL = JSON.serializePretty(structuredQuery);
+         }
          
         try {
            
@@ -32,7 +41,7 @@ public with sharing class NLPQueryController {
             result.success = true;
             result.records = records;
             result.recordCount = records.size();
-            result.query = structuredQuery.toSOQL();
+            result.query = attemptedSOQL;
             result.message = 'Successfully retrieved ' + records.size() + ' record(s)';
             
             System.debug('=== Query Successful ===');
@@ -48,9 +57,17 @@ public with sharing class NLPQueryController {
             
             result.success = false;
             result.errorType = 'OpenAI Error';
-            result.query = JSON.serializePretty(structuredQuery);
+            result.query = attemptedSOQL;
             result.message = 'Failed to process your query with AI: ' + ex.getMessage();
-            throw new AuraHandledException(result.message);
+
+            // Include attempted query details in a JSON payload for the LWC to surface
+            Map<String, Object> payload = new Map<String, Object>{
+                'message' => result.message,
+                'query' => result.query,
+                'errorType' => result.errorType
+            };
+            AuraHandledException ahe = new AuraHandledException(JSON.serialize(payload));
+            throw ahe;
             
         } catch (InsightQueryService.QueryServiceException ex) {
             // Query execution errors
@@ -61,8 +78,15 @@ public with sharing class NLPQueryController {
             result.success = false;
             result.errorType = 'Query Error';
             result.message = 'Failed to execute query: ' + ex.getMessage();
-            result.query = JSON.serializePretty(structuredQuery);
-            throw new AuraHandledException(result.message);
+            result.query = attemptedSOQL;
+
+            Map<String, Object> payload = new Map<String, Object>{
+                'message' => result.message,
+                'query' => result.query,
+                'errorType' => result.errorType
+            };
+            AuraHandledException ahe = new AuraHandledException(JSON.serialize(payload));
+            throw ahe;
             
         } catch (ValidationException ex) {
             // Input validation errors
@@ -72,8 +96,15 @@ public with sharing class NLPQueryController {
             result.success = false;
             result.errorType = 'Validation Error';
             result.message = ex.getMessage();
-            result.query = JSON.serializePretty(structuredQuery);
-            throw new AuraHandledException(result.message);
+            result.query = attemptedSOQL;
+
+            Map<String, Object> payload = new Map<String, Object>{
+                'message' => result.message,
+                'query' => result.query,
+                'errorType' => result.errorType
+            };
+            AuraHandledException ahe = new AuraHandledException(JSON.serialize(payload));
+            throw ahe;
             
         } catch (Exception ex) {
             // Unexpected errors
@@ -84,8 +115,15 @@ public with sharing class NLPQueryController {
             result.success = false;
             result.errorType = 'System Error';
             result.message = 'An unexpected error occurred: ' + ex.getMessage();
-            result.query = JSON.serializePretty(structuredQuery);
-            throw new AuraHandledException(result.message);
+            result.query = attemptedSOQL;
+
+            Map<String, Object> payload = new Map<String, Object>{
+                'message' => result.message,
+                'query' => result.query,
+                'errorType' => result.errorType
+            };
+            AuraHandledException ahe = new AuraHandledException(JSON.serialize(payload));
+            throw ahe;
         }
     }
     
@@ -135,11 +173,11 @@ public with sharing class NLPQueryController {
     public static List<String> getExampleQueries() {
         return new List<String>{
             'Show me all open insights',
-            'Show me Checking insights from this year',
+            'Show me checking insights from this year',
             'High priority insights for commercial cards',
             'Recent insights sorted by date',
             'Top 10 insights by highest priority',
-            'SHow me shortlisted insights'
+            'Show me shortlisted insights'
         };
     }
     

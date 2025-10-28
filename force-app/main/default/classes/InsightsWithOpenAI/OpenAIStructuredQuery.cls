@@ -70,6 +70,24 @@ public with sharing class OpenAIStructuredQuery {
             // Add filter conditions
             if (filters != null && !filters.isEmpty()) {
                 for (Filter f : filters) {
+                    // Normalize improper Account name comparisons:
+                    // If field is Account__c and value is a non-Id string, convert to Account__r.Name LIKE '%value%'
+                    if (f != null && f.field == 'Account__c' && f.value instanceof String) {
+                        String stringValue = (String) f.value;
+                        // Simple Id heuristic: 15 or 18 char alphanumeric (Salesforce Id)
+                        Boolean looksLikeId = stringValue != null && (
+                            Pattern.matches('^[a-zA-Z0-9]{15}$', stringValue) ||
+                            Pattern.matches('^[a-zA-Z0-9]{18}$', stringValue)
+                        );
+                        if (!looksLikeId) {
+                            Filter nameFilter = new Filter();
+                            nameFilter.field = 'Account__r.Name';
+                            nameFilter.op = 'LIKE';
+                            nameFilter.value = '%' + stringValue + '%';
+                            conditions.add(nameFilter.toCondition());
+                            continue;
+                        }
+                    }
                     conditions.add(f.toCondition());
                 }
             }
@@ -110,8 +128,6 @@ public with sharing class OpenAIStructuredQuery {
                 // Check if this is a date literal (should not be quoted)
                 if (OpenAIStructuredQuery.isDateLiteral(stringValue)) {
                     escapedValue = stringValue;
-                } else if (upperOp == 'LIKE') {
-                    escapedValue = '\'' + stringValue + '\'';
                 } else {
                     escapedValue = '\'' + stringValue + '\'';
                 }

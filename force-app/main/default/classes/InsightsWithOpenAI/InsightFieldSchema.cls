@@ -146,13 +146,15 @@ public with sharing class InsightFieldSchema {
             guidance.add('- Estimated_Annual_Revenue__c: Revenue amount (text formula) - use for revenue queries');
         }
         if (hasField(fieldMap, 'Account__r.Name')) {
-            guidance.add('- Account__c: Account reference - use Account__r.Name in WHERE clauses when filtering by Account Name');
-            guidance.add('- Use LIKE with wildcards for partial matches; for example, starts-with or contains patterns');
+            guidance.add('- Account__c: Account reference - DO NOT compare names to Account__c (it is a lookup Id).');
+            guidance.add('- For human/company names with no explicit field, TREAT as Account__r.Name.');
+            guidance.add('- Use LIKE with wildcards for proper nouns (name searches).');
             guidance.add('- Example WHERE filters:');
             guidance.add('  → {"field":"Account__r.Name","op":"LIKE","value":"%Acme%"}     (contains)');
             guidance.add('  → {"field":"Account__r.Name","op":"LIKE","value":"Acme%"}      (starts with)');
             guidance.add('  → {"field":"Account__r.Name","op":"=","value":"Acme Corp"}     (exact match)');
-            guidance.add('- When users say "for account X" or provide a company/client name, map it to Account__r.Name');
+            guidance.add('- When users say "for account X" or provide a person/company name (e.g., "Andy Peterson"), map it to Account__r.Name LIKE "%Andy Peterson%".');
+            guidance.add('- Only compare Account__c to a Salesforce Id value (15/18-char) when an Id is explicitly provided.');
         }
         if (hasField(fieldMap, 'Shortlist__c')) {
             guidance.add('- Shortlist__c: Boolean checkbox - use for "shortlisted" or "selected" queries');
