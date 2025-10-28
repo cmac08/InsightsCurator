@@ -61,7 +61,7 @@ force-app/
 ├── main/
 │   ├── default/
 │   │   ├── classes/
-│   │   │   ├── OpenApiInsightsClient.cls
+│   │   │   ├── OpenAIInsightsClient.cls
 │   │   │   ├── InsightQueryService.cls
 │   │   │   └── NLPQueryController.cls
 │   │   ├── lwc/
@@ -78,7 +78,7 @@ force-app/
 
 ## Components Overview
 
-- **OpenApiInsightsClient.cls**: Handles communication with OpenAI API
+- **OpenAIInsightsClient.cls**: Handles communication with OpenAI API
 - **InsightQueryService.cls**: Processes structured queries and generates SOQL
 - **NLPQueryController.cls**: Apex REST controller that bridges LWC to backend logic
 - **insightCurator**: LWC component for user interaction

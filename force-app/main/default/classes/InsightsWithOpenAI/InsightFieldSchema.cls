@@ -133,8 +133,11 @@ public with sharing class InsightFieldSchema {
         }
         if (hasField(fieldMap, 'EDGE_Product_Name__c')) {
             guidance.add('- EDGE_Product_Name__c: Specific product/solution name');
-            guidance.add('  → For "commercial cards", "product X", "solution Y": filter on EDGE_Product_Name__c');
-            guidance.add('  → Example: {"field":"EDGE_Product_Name__c","op":"LIKE","value":"%Commercial Cards%"}');
+            guidance.add('- IMPORTANT: Normalize solution/product names from plural to singular form before filtering');
+            guidance.add('  → Example: input "Commercial Cards" should be simplified to "Commercial Card"');
+            guidance.add('  → Example: input "Retail Payments" → "Retail Payment" (remove trailing "s" when appropriate)');
+            guidance.add('  → For "commercial card", "product X", "solution Y": filter on EDGE_Product_Name__c');
+            guidance.add('  → Example filter: {"field":"EDGE_Product_Name__c","op":"LIKE","value":"%Commercial Card%"}');
         }
         if (hasField(fieldMap, 'Rank__c')) {
             guidance.add('- Rank__c: Numeric ranking (decimal) - use for sorting by importance');
@@ -142,8 +145,14 @@ public with sharing class InsightFieldSchema {
         if (hasField(fieldMap, 'Estimated_Annual_Revenue__c')) {
             guidance.add('- Estimated_Annual_Revenue__c: Revenue amount (text formula) - use for revenue queries');
         }
-        if (hasField(fieldMap, 'Account__c')) {
-            guidance.add('- Account__c: Account reference - use for account/customer/client filters');
+        if (hasField(fieldMap, 'Account__r.Name')) {
+            guidance.add('- Account__c: Account reference - use Account__r.Name in WHERE clauses when filtering by Account Name');
+            guidance.add('- Use LIKE with wildcards for partial matches; for example, starts-with or contains patterns');
+            guidance.add('- Example WHERE filters:');
+            guidance.add('  → {"field":"Account__r.Name","op":"LIKE","value":"%Acme%"}     (contains)');
+            guidance.add('  → {"field":"Account__r.Name","op":"LIKE","value":"Acme%"}      (starts with)');
+            guidance.add('  → {"field":"Account__r.Name","op":"=","value":"Acme Corp"}     (exact match)');
+            guidance.add('- When users say "for account X" or provide a company/client name, map it to Account__r.Name');
         }
         if (hasField(fieldMap, 'Shortlist__c')) {
             guidance.add('- Shortlist__c: Boolean checkbox - use for "shortlisted" or "selected" queries');
@@ -155,7 +164,7 @@ public with sharing class InsightFieldSchema {
             guidance.add('- CreatedDate: DateTime field - use date literals (TODAY, THIS_YEAR, LAST_N_DAYS:30) without quotes');
         }
         if (hasField(fieldMap, 'LastModifiedDate')) {
-            guidance.add('- LastModifiedDate: DateTime field - use date literals without quotes');
+            guidance.add('- LastModifiedDate: DateTime field - use date literals (TODAY, THIS_YEAR, LAST_N_DAYS:30) without quotes');
         }
         
         if (guidance.isEmpty()) {

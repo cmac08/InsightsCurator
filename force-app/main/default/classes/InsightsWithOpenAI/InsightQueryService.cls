@@ -230,6 +230,12 @@ public with sharing class InsightQueryService {
             return false;
         }
         
+        // Support relationship field Account__r.Name explicitly since it's not present in the Insight__c fields map
+        if (fieldName == 'Account__r.Name') {
+            // Account name is filterable (text)
+            return true;
+        }
+        
         // Get field type
         Map<String, Schema.SObjectField> fieldMap = Schema.SObjectType.Insight__c.fields.getMap();
         Schema.SObjectField field = fieldMap.get(fieldName.toLowerCase());
@@ -282,8 +288,7 @@ public with sharing class InsightQueryService {
             'Rank__c',
             'Shortlist__c',
             'Status__c',
-            'Insight_Details__c',
-            'Category__c'
+            'Insight_Details__c'
         };
         
         return allowedFields.contains(fieldName);

@@ -6,8 +6,8 @@ public with sharing class OpenAIRequestBuilder {
     /**
      * Builds a request to convert natural language to structured query
      */
-    public static OpenApiInsightsClient.OpenAIRequest buildQueryRequest(String prompt, String model) {
-        OpenApiInsightsClient.OpenAIRequest request = new OpenApiInsightsClient.OpenAIRequest();
+    public static OpenAIInsightsClient.OpenAIRequest buildQueryRequest(String prompt, String model) {
+        OpenAIInsightsClient.OpenAIRequest request = new OpenAIInsightsClient.OpenAIRequest();
         request.model = model;
         request.instructions = getQueryInstructions();
         request.input = prompt;
@@ -59,7 +59,7 @@ public with sharing class OpenAIRequestBuilder {
             + 'COMMON QUERY PATTERNS:\n'
             + '1. Workflow Status: Status__c = "Open" | "Closed" | "Deferred" | "Archived"\n'
             + '2. Priority/Confidence: Likelihood__c = "Very High" | "High" | "Medium" | "Low"\n'
-            + '3. Product/Solution/Industry: EDGE_Product_Name__c LIKE "%Commercial Cards%" | "%Banking%"\n'
+            + '3. Product/Solution/Industry: EDGE_Product_Name__c LIKE "%Commercial Card%" | "%Banking%"\n'
             + '4. Importance: Sort by Rank__c or filter Rank__c >= X\n'
             + '5. Details field: Insight_Details__c can ONLY be in fields array, NEVER in filters\n\n'
             + 'FIELD MISTAKES TO AVOID:\n'

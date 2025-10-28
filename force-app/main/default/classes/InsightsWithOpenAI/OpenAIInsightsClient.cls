@@ -2,7 +2,7 @@
  * Main client for OpenAI API integration
  * Handles communication with OpenAI Responses API
  */
-public with sharing class OpenApiInsightsClient {
+public with sharing class OpenAIInsightsClient {
     
     private static final String NAMED_CREDENTIAL = 'OpenAI';
     private static final String ENDPOINT = 'callout:' + NAMED_CREDENTIAL + '/v1/responses';

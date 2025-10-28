@@ -36,17 +36,17 @@ public with sharing class OpenAIResponseParser {
             System.debug('Successfully parsed query: ' + JSON.serializePretty(query));
             return query;
             
-        } catch (OpenApiInsightsClient.OpenAIException e) {
+        } catch (OpenAIInsightsClient.OpenAIException e) {
             // Re-throw our custom exceptions
             throw e;
         } catch (JSONException e) {
-            throw new OpenApiInsightsClient.OpenAIException(
+            throw new OpenAIInsightsClient.OpenAIException(
                 'Invalid JSON in OpenAI response: ' + e.getMessage() + 
                 '\nResponse: ' + response.getBody(),
                 e
             );
         } catch (Exception e) {
-            throw new OpenApiInsightsClient.OpenAIException(
+            throw new OpenAIInsightsClient.OpenAIException(
                 'Unexpected error parsing OpenAI response: ' + e.getMessage() + 
                 '\nResponse: ' + response.getBody(),
                 e
@@ -61,7 +61,7 @@ public with sharing class OpenAIResponseParser {
         Object errorObj = response.get('error');
         if (errorObj != null) {
             String errorMessage = String.valueOf(errorObj);
-            throw new OpenApiInsightsClient.OpenAIException(
+            throw new OpenAIInsightsClient.OpenAIException(
                 'OpenAI API returned error: ' + errorMessage
             );
         }
@@ -76,7 +76,7 @@ public with sharing class OpenAIResponseParser {
             // Navigate: output array
             List<Object> outputList = (List<Object>) response.get('output');
             if (outputList == null || outputList.isEmpty()) {
-                throw new OpenApiInsightsClient.OpenAIException(
+                throw new OpenAIInsightsClient.OpenAIException(
                     'OpenAI response missing "output" array'
                 );
             }
@@ -84,7 +84,7 @@ public with sharing class OpenAIResponseParser {
             // Navigate: first output item
             Map<String, Object> firstOutput = (Map<String, Object>) outputList[0];
             if (firstOutput == null) {
-                throw new OpenApiInsightsClient.OpenAIException(
+                throw new OpenAIInsightsClient.OpenAIException(
                     'OpenAI response output array is empty'
                 );
             }
@@ -92,7 +92,7 @@ public with sharing class OpenAIResponseParser {
             // Navigate: content array
             List<Object> contentList = (List<Object>) firstOutput.get('content');
             if (contentList == null || contentList.isEmpty()) {
-                throw new OpenApiInsightsClient.OpenAIException(
+                throw new OpenAIInsightsClient.OpenAIException(
                     'OpenAI response missing "content" array in output'
                 );
             }
@@ -100,7 +100,7 @@ public with sharing class OpenAIResponseParser {
             // Navigate: first content item
             Map<String, Object> firstContent = (Map<String, Object>) contentList[0];
             if (firstContent == null) {
-                throw new OpenApiInsightsClient.OpenAIException(
+                throw new OpenAIInsightsClient.OpenAIException(
                     'OpenAI response content array is empty'
                 );
             }
@@ -108,7 +108,7 @@ public with sharing class OpenAIResponseParser {
             // Extract: text field
             String text = (String) firstContent.get('text');
             if (String.isBlank(text)) {
-                throw new OpenApiInsightsClient.OpenAIException(
+                throw new OpenAIInsightsClient.OpenAIException(
                     'OpenAI response text content is empty'
                 );
             }
@@ -116,7 +116,7 @@ public with sharing class OpenAIResponseParser {
             return text;
             
         } catch (TypeException e) {
-            throw new OpenApiInsightsClient.OpenAIException(
+            throw new OpenAIInsightsClient.OpenAIException(
                 'Unexpected structure in OpenAI response: ' + e.getMessage(),
                 e
             );
@@ -140,12 +140,12 @@ public with sharing class OpenAIResponseParser {
         
         // Validate it starts with { and ends with }
         if (!jsonText.startsWith('{')) {
-            throw new OpenApiInsightsClient.OpenAIException(
+            throw new OpenAIInsightsClient.OpenAIException(
                 'Invalid JSON: Does not start with {. Got: ' + jsonText.substring(0, Math.min(50, jsonText.length()))
             );
         }
         if (!jsonText.endsWith('}')) {
-            throw new OpenApiInsightsClient.OpenAIException(
+            throw new OpenAIInsightsClient.OpenAIException(
                 'Invalid JSON: Does not end with }. Got: ....' + jsonText.substring(Math.max(0, jsonText.length() - 50))
             );
         }
@@ -196,7 +196,7 @@ public with sharing class OpenAIResponseParser {
             return query;
             
         } catch (Exception e) {
-            throw new OpenApiInsightsClient.OpenAIException(
+            throw new OpenAIInsightsClient.OpenAIException(
                 'Failed to parse JSON into StructuredQuery: ' + e.getMessage() + 
                 '\nJSON was: ' + jsonText,
                 e
@@ -273,25 +273,25 @@ public with sharing class OpenAIResponseParser {
      */
     private static void validateQuery(OpenAIStructuredQuery.StructuredQuery query) {
         if (query == null) {
-            throw new OpenApiInsightsClient.OpenAIException(
+            throw new OpenAIInsightsClient.OpenAIException(
                 'Parsed query is null'
             );
         }
         
         if (String.isBlank(query.objectName)) {
-            throw new OpenApiInsightsClient.OpenAIException(
+            throw new OpenAIInsightsClient.OpenAIException(
                 'Query missing required field: objectName'
             );
         }
         
         if (query.objectName != 'Insight__c') {
-            throw new OpenApiInsightsClient.OpenAIException(
+            throw new OpenAIInsightsClient.OpenAIException(
                 'Query objectName must be "Insight__c", got: ' + query.objectName
             );
         }
         
         if (query.fields == null || query.fields.isEmpty()) {
-            throw new OpenApiInsightsClient.OpenAIException(
+            throw new OpenAIInsightsClient.OpenAIException(
                 'Query missing required field: fields array'
             );
         }
@@ -299,12 +299,12 @@ public with sharing class OpenAIResponseParser {
         // Validate Id and Name are included
         Set<String> fieldSet = new Set<String>(query.fields);
         if (!fieldSet.contains('Id')) {
-            throw new OpenApiInsightsClient.OpenAIException(
+            throw new OpenAIInsightsClient.OpenAIException(
                 'Query fields must include "Id"'
             );
         }
         if (!fieldSet.contains('Name')) {
-            throw new OpenApiInsightsClient.OpenAIException(
+            throw new OpenAIInsightsClient.OpenAIException(
                 'Query fields must include "Name"'
             );
         }

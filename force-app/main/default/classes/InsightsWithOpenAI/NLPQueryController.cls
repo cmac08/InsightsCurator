@@ -13,18 +13,18 @@ public with sharing class NLPQueryController {
     @AuraEnabled(cacheable=true)
     public static QueryResult processPrompt(String prompt, String modelName) {
         QueryResult result = new QueryResult();
-        
+         // Validate input
+         validateInput(prompt);
+            
+         // Step 1: Convert natural language to structured query using OpenAI
+         OpenAIStructuredQuery.StructuredQuery structuredQuery = 
+             OpenAIInsightsClient.getStructuredQuery(prompt, modelName);
+         
+         System.debug('=== Structured Query Created ===');
+         System.debug(JSON.serializePretty(structuredQuery));
+         
         try {
-            // Validate input
-            validateInput(prompt);
-            
-            // Step 1: Convert natural language to structured query using OpenAI
-            OpenAIStructuredQuery.StructuredQuery structuredQuery = 
-                OpenApiInsightsClient.getStructuredQuery(prompt, modelName);
-            
-            System.debug('=== Structured Query Created ===');
-            System.debug(JSON.serializePretty(structuredQuery));
-            
+           
             // Step 2: Execute the query against Salesforce
             List<Insight__c> records = InsightQueryService.execute(structuredQuery);
             
@@ -40,7 +40,7 @@ public with sharing class NLPQueryController {
             
             return result;
             
-        } catch (OpenApiInsightsClient.OpenAIException ex) {
+        } catch (OpenAIInsightsClient.OpenAIException ex) {
             // OpenAI-specific errors
             System.debug(LoggingLevel.ERROR, '=== OpenAI Error ===');
             System.debug(LoggingLevel.ERROR, ex.getMessage());
@@ -48,6 +48,7 @@ public with sharing class NLPQueryController {
             
             result.success = false;
             result.errorType = 'OpenAI Error';
+            result.query = JSON.serializePretty(structuredQuery);
             result.message = 'Failed to process your query with AI: ' + ex.getMessage();
             throw new AuraHandledException(result.message);
             
@@ -60,6 +61,7 @@ public with sharing class NLPQueryController {
             result.success = false;
             result.errorType = 'Query Error';
             result.message = 'Failed to execute query: ' + ex.getMessage();
+            result.query = JSON.serializePretty(structuredQuery);
             throw new AuraHandledException(result.message);
             
         } catch (ValidationException ex) {
@@ -70,6 +72,7 @@ public with sharing class NLPQueryController {
             result.success = false;
             result.errorType = 'Validation Error';
             result.message = ex.getMessage();
+            result.query = JSON.serializePretty(structuredQuery);
             throw new AuraHandledException(result.message);
             
         } catch (Exception ex) {
@@ -81,6 +84,7 @@ public with sharing class NLPQueryController {
             result.success = false;
             result.errorType = 'System Error';
             result.message = 'An unexpected error occurred: ' + ex.getMessage();
+            result.query = JSON.serializePretty(structuredQuery);
             throw new AuraHandledException(result.message);
         }
     }
@@ -90,7 +94,7 @@ public with sharing class NLPQueryController {
      */
     private static void validateInput(String prompt) {
         if (String.isBlank(prompt)) {
-            throw new ValidationException('Please enter a query. For example: "show me banking insights"');
+            throw new ValidationException('Please enter a query. For example: "show me checking insights"');
         }
         
         if (prompt.length() > 500) {
@@ -118,8 +122,8 @@ public with sharing class NLPQueryController {
     public static List<ModelOption> getAvailableModels() {
         return new List<ModelOption>{
             new ModelOption('GPT-4o Mini (Fast)', 'gpt-4o-mini', true),
-            new ModelOption('GPT-4.1-nano', 'gpt-4.1-nano', false)
-            new ModelOption('GPT-5-nano	', 'gpt-5-nano', false),
+            new ModelOption('GPT-4.1-nano', 'gpt-4.1-nano', false),
+            new ModelOption('GPT-5-nano	', 'gpt-5-nano', false)
         };
     }
     
@@ -131,10 +135,11 @@ public with sharing class NLPQueryController {
     public static List<String> getExampleQueries() {
         return new List<String>{
             'Show me all open insights',
-            'Banking insights from this year',
+            'Show me Checking insights from this year',
             'High priority insights for commercial cards',
             'Recent insights sorted by date',
-            'Top 10 insights by priority'
+            'Top 10 insights by highest priority',
+            'SHow me shortlisted insights'
         };
     }
     

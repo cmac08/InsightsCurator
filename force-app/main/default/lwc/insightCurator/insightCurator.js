@@ -19,6 +19,7 @@ export default class insightCurator extends LightningElement {
     @track results = [];
     @track recordCount = 0;
     @track generatedQuery = '';
+    @track lastQueryStatus = ''; // "Success" or "Failed"
     
     // Options
     @track modelOptions = [];
@@ -28,9 +29,13 @@ export default class insightCurator extends LightningElement {
     columns = [
         { 
             label: 'Insight Name', 
-            fieldName: 'Name', 
-            type: 'text',
-            initialWidth: 150
+            fieldName: 'insightUrl',
+            type: 'url',
+            typeAttributes: {
+                label: { fieldName: 'Name' },
+                target: '_blank'
+            },
+            initialWidth: 180
         },
         { 
             label: 'Account', 
@@ -123,6 +128,15 @@ export default class insightCurator extends LightningElement {
         return this.showQuery ? 'utility:chevrondown' : 'utility:chevronright';
     }
 
+    // Computed banner to always show success/failure next to the generated query
+    get generatedQueryWithStatus() {
+        if (!this.hasSearched) {
+            return '';
+        }
+        const status = this.lastQueryStatus ? `[${this.lastQueryStatus}] ` : '';
+        return `${status}${this.generatedQuery || ''}`;
+    }
+
     // Load available models
     async loadModels() {
         try {
@@ -186,6 +200,7 @@ export default class insightCurator extends LightningElement {
         this.results = [];
         this.recordCount = 0;
         this.generatedQuery = '';
+        this.lastQueryStatus = '';
         this.hasSearched = true;
 
         try {
@@ -200,6 +215,7 @@ export default class insightCurator extends LightningElement {
             this.results = this.enrichResults(result.records || []);
             this.recordCount = result.recordCount || 0;
             this.generatedQuery = result.query || '';
+            this.lastQueryStatus = result.success ? 'Success' : 'Failed';
 
             // Show success message
             this.showToast(
@@ -214,6 +230,9 @@ export default class insightCurator extends LightningElement {
             this.errorMessage = error.body?.message || 
                                error.message || 
                                'An unexpected error occurred';
+            // Ensure the Generated Query panel still communicates failure
+            this.lastQueryStatus = 'Failed';
+            this.generatedQuery = this.generatedQuery || result.query; // keep string type
             
             this.showToast(
                 'Query Failed',
@@ -235,6 +254,11 @@ export default class insightCurator extends LightningElement {
         return records.map(record => {
             // Create a copy of the record
             const enrichedRecord = { ...record };
+
+            // Add Insight URL for clickable Insight Name
+            if (record.Id) {
+                enrichedRecord.insightUrl = '/lightning/r/Insight__c/' + record.Id + '/view';
+            }
 
             // Add account URL and Name label for linking to the account record
             if (record.Account__c) {

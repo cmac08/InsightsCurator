@@ -112,7 +112,8 @@
             </div>
 
             <!-- Generated SOQL Query (Expandable) -->
-            <template if:true={generatedQuery}>
+            <!-- Always show after a search, even on failure; use generatedQueryWithStatus which includes [Success]/[Failed] -->
+            <template if:true={hasSearched}>
                 <div class="slds-var-p-horizontal_medium slds-var-p-bottom_small">
                     <div class="slds-box slds-box_x-small slds-theme_shade">
                         <div class="slds-grid slds-grid_align-spread">
@@ -127,11 +128,11 @@
                                 variant="bare"
                             ></lightning-button-icon>
                         </div>
-                        <template if:true={showQuery}>
+                        <!-- <template if:true={showQuery}> -->
                             <div class="slds-m-top_x-small">
-                                <code class="slds-text-body_small">{generatedQuery}</code>
+                                <code class="slds-text-body_small">{generatedQueryWithStatus}</code>
                             </div>
-                        </template>
+                        <!-- </template> -->
                     </div>
                 </div>
             </template>
