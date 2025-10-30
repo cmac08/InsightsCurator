@@ -303,7 +303,7 @@ public with sharing class InsightQueryService {
         }
         
         Set<String> allowedOperators = new Set<String>{
-            '=', '!=', '>', '>=', '<', '<=', 'IN', 'NOT IN', 'LIKE'
+            '=', '!=', '>', '>=', '<', '<=', 'IN', 'NOT IN', 'LIKE', 'CONTAINS'
         };
         
         return allowedOperators.contains(operator.trim().toUpperCase());
