@@ -128,6 +128,11 @@ export default class insightCurator extends LightningElement {
         return this.showQuery ? 'utility:chevrondown' : 'utility:chevronright';
     }
 
+    // Disable Export when loading or there are no results
+    get isExportDisabled() {
+        return this.loading || !this.results || this.results.length === 0;
+    }
+
     // Computed banner to always show success/failure next to the generated query
     get generatedQueryWithStatus() {
         if (!this.hasSearched) {
@@ -186,6 +191,86 @@ export default class insightCurator extends LightningElement {
         // this.showQuery = !this.showQuery;
         this.showQuery = true;
 
+    }
+
+    // Export current results to CSV (client-side) following LWC best practices
+    handleExportCsv() {
+        try {
+            const rows = this.results || [];
+            if (!rows.length) {
+                this.showToast('Info', 'No results to export', 'info');
+                return;
+            }
+
+            // Derive export fields from currently defined columns to keep parity with the table
+            const exportColumns = this.columns
+                .filter(col => col.type !== 'action') // skip action column
+                .map(col => {
+                    // Prefer label if present; fallback to fieldName
+                    return {
+                        label: col.label || col.fieldName,
+                        fieldName: col.fieldName
+                    };
+                });
+
+            // Build CSV
+            const csv = this.buildCsv(exportColumns, rows);
+
+            // Trigger browser download
+            this.downloadCsv(csv, 'insights_export.csv');
+
+            this.showToast('Success', 'CSV exported', 'success');
+        } catch (e) {
+            // Surface any error to user
+            // eslint-disable-next-line no-console
+            console.error('CSV export failed', e);
+            this.showToast('Error', e?.message || 'Failed to export CSV', 'error');
+        }
+    }
+
+    // Build CSV text from columns and data rows
+    buildCsv(columns, data) {
+        const escapeCell = (value) => {
+            if (value === null || value === undefined) return '';
+            // Convert objects to string (e.g., dates/numbers left as-is)
+            let cell = String(value);
+            // Escape quotes by doubling them
+            cell = cell.replace(/"/g, '""');
+            // Wrap in quotes if cell contains comma, quote, or newline
+            if (/[",\n]/.test(cell)) {
+                cell = `"${cell}"`;
+            }
+            return cell;
+        };
+
+        // Header row
+        const header = columns.map(c => escapeCell(c.label)).join(',');
+
+        // Data rows
+        const lines = data.map(row => {
+            return columns.map(c => escapeCell(row[c.fieldName])).join(',');
+        });
+
+        return [header, ...lines].join('\n');
+    }
+
+    // Initiate download using an anchor element
+    downloadCsv(csvText, filename) {
+        // Per Locker Service guidance, use application/octet-stream for client-side downloads
+        // Add BOM to improve Excel handling while keeping generic MIME
+        const BOM = '\\ufeff';
+        const blob = new Blob([BOM, csvText], { type: 'application/octet-stream' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        // Ensure correct file extension and hint content type for some environments
+        const safeFilename = filename && filename.endsWith('.csv') ? filename : 'insights_export.csv';
+        link.setAttribute('download', safeFilename);
+        // Some browsers honor the 'download' attribute only for same-origin; object URL is same-origin
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
     }
 
     // Main submit handler

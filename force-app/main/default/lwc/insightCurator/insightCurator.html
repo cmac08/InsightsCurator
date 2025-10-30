@@ -32,6 +32,15 @@
                         icon-name="utility:search"
                         onclick={handleSubmit}
                         disabled={isSubmitDisabled}
+                        class="slds-m-top_large slds-m-right_small"
+                    ></lightning-button>
+                    <lightning-button
+                        variant="neutral"
+                        label="Export CSV"
+                        title="Export results to CSV"
+                        icon-name="utility:download"
+                        onclick={handleExportCsv}
+                        disabled={isExportDisabled}
                         class="slds-m-top_large"
                     ></lightning-button>
                 </div>
