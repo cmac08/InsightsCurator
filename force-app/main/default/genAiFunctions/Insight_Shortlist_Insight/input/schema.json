@@ -1,0 +1,14 @@
+{
+  "required" : [ "recordId" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "recordId" : {
+      "title" : "recordId",
+      "description" : "Pass Record ID of Insight to be shortlisted to flow",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}

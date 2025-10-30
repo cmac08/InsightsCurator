@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BotVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>v1</fullName>
+    <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
+    <botDialogs>
+        <botSteps>
+            <botMessages>
+                <message>Hi! I&apos;m Einstein, an AI assistant. I can do things like search for information, summarize records, and draft and revise emails. What can I help you with?</message>
+                <messageIdentifier>0b432149-bda0-45bf-9ddb-125d8e5ef6f7</messageIdentifier>
+            </botMessages>
+            <stepIdentifier>b9ddc659-ab01-4c0f-b944-bcfffd39d235</stepIdentifier>
+            <type>Message</type>
+        </botSteps>
+        <botSteps>
+            <stepIdentifier>15c101f5-d8ff-4f7e-9c73-40dc808dbaba</stepIdentifier>
+            <type>Wait</type>
+        </botSteps>
+        <developerName>Welcome</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
+        <label>Welcome</label>
+        <showInFooterMenu>false</showInFooterMenu>
+    </botDialogs>
+    <botDialogs>
+        <botSteps>
+            <botMessages>
+                <message>Something went wrong. Try again.</message>
+                <messageIdentifier>5b884637-a767-417a-95c9-fac04b0fc3d0</messageIdentifier>
+            </botMessages>
+            <stepIdentifier>7d3001ee-7275-40e9-92ea-a03f67a61422</stepIdentifier>
+            <type>Message</type>
+        </botSteps>
+        <botSteps>
+            <stepIdentifier>9ced3852-bcb7-45e1-8361-c1a13f732547</stepIdentifier>
+            <type>Wait</type>
+        </botSteps>
+        <developerName>Rich_Content_Error_Handling</developerName>
+        <isPlaceholderDialog>false</isPlaceholderDialog>
+        <label>Error Handler</label>
+        <showInFooterMenu>false</showInFooterMenu>
+    </botDialogs>
+    <citationsEnabled>false</citationsEnabled>
+    <conversationDefinitionPlanners>
+        <genAiPlannerName>EmployeeCopilotPlanner</genAiPlannerName>
+    </conversationDefinitionPlanners>
+    <conversationSystemDialogs>
+        <dialog>Rich_Content_Error_Handling</dialog>
+        <type>ErrorHandling</type>
+    </conversationSystemDialogs>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Salesforce Application Name.</description>
+        <developerName>currentAppName</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>Current App Name</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The API name of the Salesforce object (such as Account or Opportunity) associated with the record the user wants to interact with. Do not use this if the user is already talking about another object in the conversation.</description>
+        <developerName>currentObjectApiName</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>Current Object Api Name</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Type of Salesforce Page.</description>
+        <developerName>currentPageType</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>Current Page Type</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The ID of the record on the user&apos;s screen. It may not relate to the user&apos;s input. Only use this if the user input mentions &apos;this&apos;, &apos;current&apos;, &apos;the record&apos;, etc. If in doubt, don&apos;t use it.</description>
+        <developerName>currentRecordId</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>Current Record Id</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Prefill_Defer_Date</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>Prefill Defer Date</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <developerName>Prefill_Defer_Note</developerName>
+        <includeInPrompt>true</includeInPrompt>
+        <label>Prefill Defer Note</label>
+        <visibility>External</visibility>
+    </conversationVariables>
+    <entryDialog>Welcome</entryDialog>
+    <intentDisambiguationEnabled>false</intentDisambiguationEnabled>
+    <intentV3Enabled>false</intentV3Enabled>
+    <knowledgeActionEnabled>false</knowledgeActionEnabled>
+    <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
+    <smallTalkEnabled>false</smallTalkEnabled>
+    <stopRecPrompts>false</stopRecPrompts>
+    <stopWelcomePrompts>false</stopWelcomePrompts>
+    <surfacesEnabled>false</surfacesEnabled>
+</BotVersion>

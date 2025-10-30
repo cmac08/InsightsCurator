@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiFunction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Your job is to run this flow when a user requests to create an Opportunity from an Insight</description>
+    <invocationTarget>Create_Opp_From_Insight</invocationTarget>
+    <invocationTargetType>flow</invocationTargetType>
+    <isConfirmationRequired>false</isConfirmationRequired>
+    <isIncludeInProgressIndicator>false</isIncludeInProgressIndicator>
+    <masterLabel>Create Opp from Insight</masterLabel>
+</GenAiFunction>
