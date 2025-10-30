@@ -1,0 +1,2174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_29</activeVersionIdentifier>
+    <developerName>Account_Insights</developerName>
+    <masterLabel>Account Insights</masterLabel>
+    <relatedEntity>Account</relatedEntity>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all related {!$RelatedList:Account.Insights__r.Records} for the {!$Input:Account.Id}
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences) 
+-Synthesize the most important takeaways about this customer
+-Highlight overall customer health engagement
+
+2. Key Insights (3-5 bullet points0 
+- Identify the most significant patters
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+3. Sentiment Analysis
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+4. Recommended Actions (2-4) 
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+5. Risk Factors: 
+- Flag concerns that need attention
+-Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_1</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences) 
+-Synthesize the most important takeaways about this customer
+-Highlight overall customer health engagement
+
+2. Key Insights (3-5 bullet points0 
+- Identify the most significant patters
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+3. Sentiment Analysis
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+4. Recommended Actions (2-4) 
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+5. Risk Factors: 
+- Flag concerns that need attention
+-Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_2</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences) 
+-Synthesize the most important takeaways about this customer
+-Highlight overall customer health engagement
+
+2. Key Insights (3-5 bullet points) 
+- Identify the most significant patters
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+3. Sentiment Analysis
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+4. Recommended Actions (2-4) 
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+5. Risk Factors: 
+- Flag concerns that need attention
+-Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_3</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+3. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+4. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+5. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+6. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 of the most promising records to highlight
+- Suggest an action item for each highlighted Insight
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_4</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+3. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+4. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+5. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+6. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_5</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+3. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+4. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+5. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+6. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note the Product
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_6</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+3. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+4. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+5. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+6. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note the Product
+- Add a link to the Insight using the recordId
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_7</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+3. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+4. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+5. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+6. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note the Product
+- Construct a link to the Insight using the recordId and the org&apos;s base URL
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_8</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note the Product
+- Construct a link to the Insight using the recordId and the org&apos;s base URL (reference the current page for base URL, do not make it up)
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_9</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note the Product
+- link to the Insight using the recordId in a relative URL (format: /lightning/r/Insight__c/[Insight ID Here]/view)
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_10</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note the Product
+- link to the Insight using the recordId in a relative URL (format: /lightning/r/Insight__c/[Insight ID Here]/view). It should open in a new tab
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_11</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note the Product
+- link to the Insight using the recordId in a relative URL (no base)
+- link format: /lightning/r/Insight__c/[Insight ID Here]/view
+- link should open in a new tab
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_12</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note the Product
+- link to the Insight using the recordId in a relative URL (no base)
+- link format: /lightning/r/Insight__c/[Insight ID Here]/view
+- set the link to open in a new tab
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_13</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note the Product
+- link to the Insight using the recordId in a relative URL (no base)
+- link format: /lightning/r/Insight__c/[Insight ID Here]/view (link MUST open in a new tab)
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_14</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note the Product
+- link to the Insight using the recordId in a relative URL (no base)
+- link format: /lightning/r/Insight__c/[Insight ID Here]/view (link MUST open in a new tab, use target=&quot;_blank&quot;)
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_15</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note the Product
+- Provide a link to the Insight
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_16</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note the Product
+- Provide a link to the highlighted Insight record
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_17</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note the Product
+- Provide a link to the highlighted Insight record using the Insight ID
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_18</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- If Account has &gt;5 Insight records choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note Product
+- Provide a hyperlink to the highlighted Insight record using the Insight Record ID
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_19</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- Choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note Product
+- Provide a hyperlink to the highlighted Insight record using the Insight Record ID
+- IMPORTANT NOTE: You MUST use this Salesforce org&apos;s BASE_URL. DO NOT GUESS.
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Draft</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_20</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- Choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note Product
+- Provide a relative hyperlink to the highlighted Insight record using the Insight Record ID (link format: &apos;/a8W000000000&apos;)
+- The link MUST begin with a &apos;/&apos;
+- The link Label should say &apos;View Insight&apos;
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_21</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- Choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note Product
+- Provide a relative hyperlink to the highlighted Insight record using the Insight Record ID (Use this EXACT link format replacing with dummy ID with the Insight record ID: &apos;/a8W000000000&apos;)
+- The link MUST begin with a &apos;/&apos;
+- The link Label should say &apos;View Insight&apos;
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_22</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- Choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note Product
+- Provide a relative hyperlink to the highlighted Insight record using the Insight Record ID (Use this EXACT link format replacing with dummy ID with the Insight record ID: &apos;/a8W000000000&apos;)
+- The link MUST begin with a &apos;/&apos;
+- The link Label should say &apos;View Insight&apos;
+- If the resulting link contains the word &apos;Account&apos;, give up and delete the entire response and response with &apos;Can&apos;t understand URLs&apos;
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_23</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- Choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note Product
+- IMPORTANT! The following rules about returning an insight record link need to be adhered to 100%. This is RULE NUMBER ONE and takes precedence above ALL OTHER RULES:
+- Provide a relative hyperlink to the highlighted Insight record using the Insight Record ID (Use this EXACT link format replacing with dummy ID with the Insight record ID: &apos;/a8W000000000&apos;)
+- The link MUST begin with a &apos;/&apos;
+- The link Label should say &apos;View Insight&apos;
+- If the resulting link contains the word &apos;Account&apos;, give up and delete the entire response and response with &apos;Can&apos;t understand URLs&apos;
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_24</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- Choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note Product
+- IMPORTANT! The following rules about returning an insight record link need to be adhered to 100%. This is RULE NUMBER ONE and takes precedence above ALL OTHER RULES:
+- Provide a relative hyperlink to the highlighted Insight record using the Insight Record ID (Use this EXACT link format replacing with dummy ID with the Insight record ID: &apos;/a8W000000000&apos;)
+- The link MUST begin with a &apos;/&apos;
+- The link Label should say &apos;View Insight&apos;
+- Check the link before showing it to the user. If the resulting link contains the word &apos;Account&apos;, give up and delete the entire response and response with &apos;I can&apos;t understand URLs&apos;
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_25</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- Choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note Product
+- IMPORTANT! The following rules about returning an insight record link need to be adhered to 100%. This is RULE NUMBER ONE and takes precedence above ALL OTHER RULES:
+- Provide a relative hyperlink to the highlighted Insight record using the Insight Record ID (Use this EXACT link format replacing with dummy ID with the Insight record ID: &apos;/a8W000000000&apos;)
+- The link MUST begin with a &apos;/&apos;
+- The link Label should say &apos;View Insight&apos;
+- Check the link before showing it to the user. If the resulting link contains the word &apos;Account&apos;, give up and delete the entire response and response with &apos;I can&apos;t understand URLs&apos;
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultBedrockAnthropicClaude37Sonnet</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_26</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- Choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note Product
+- IMPORTANT! The following rules about returning an insight record link need to be adhered to 100%. This is RULE NUMBER ONE and takes precedence above ALL OTHER RULES:
+- Provide a relative hyperlink to the highlighted Insight record using the Insight Record ID (Use this EXACT link format replacing with dummy ID with the Insight record ID: &apos;/a8W000000000&apos;)
+- The link MUST begin with a &apos;/&apos;
+- The link Label should say &apos;View Insight&apos;
+- Check the link before showing it to the user. If the resulting link contains the word &apos;Account&apos;, give up and delete the entire response and response with &apos;I can&apos;t understand URLs&apos;
+- If possible, make the link open in a new window.
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultBedrockAnthropicClaude37Sonnet</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_27</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- Choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note Product
+- IMPORTANT! The following rules about returning an insight record link need to be adhered to 100%. This is RULE NUMBER ONE and takes precedence above ALL OTHER RULES:
+- Provide a relative hyperlink to the highlighted Insight record using the Insight Record ID (Use this EXACT link format replacing with dummy ID with the Insight record ID: &apos;/a8W000000000&apos;)
+- The link MUST begin with a &apos;/&apos;
+- The link Label should say &apos;View Insight&apos;
+- Check the link before showing it to the user. If the resulting link contains the word &apos;Account&apos;, give up and delete the entire response and response with &apos;I can&apos;t understand URLs&apos;
+- If possible, make the link open in a new window using target=&quot;_blank&quot;
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultBedrockAnthropicClaude37Sonnet</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_28</versionIdentifier>
+    </templateVersions>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing {!$RelatedList:Account.Insights__r.Records} for {!$Input:Account.Name}
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Account.Name}
+{!$Input:Account.Industry}
+
+
+Insight Details:
+Gather all Insight Details for the related account. 
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences):
+- Synthesize the most important takeaways about this customer
+- Highlight overall customer health engagement
+
+2. Insight Highlights:
+- Choose 1-3 Open Status records with the highest Rank, Likelihood, and Estimated Annual Revenue to highlight
+- Note a suggested action item for each highlighted Insight
+- Note Product
+- IMPORTANT! The following rules about returning an insight record link need to be adhered to 100%. This is RULE NUMBER ONE and takes precedence above ALL OTHER RULES:
+- Provide a relative hyperlink to the highlighted Insight record using the Insight Record ID (Use this EXACT link format replacing with dummy ID with the Insight record ID: &apos;/a8W000000000&apos;)
+- The link MUST begin with a &apos;/&apos;
+- The link Label should say &apos;View Insight&apos;
+- Check the link before showing it to the user. If the resulting link contains the word &apos;Account&apos;, give up and delete the entire response and response with &apos;I can&apos;t understand URLs&apos;
+- Add an extra line break following the link
+- If possible, make the link open in a new window using target=&quot;_blank&quot;
+
+3. Key Insights (3-5 bullet points):
+- Identify the most significant patterns
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+4. Sentiment Analysis:
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+5. Recommended Actions (2-4):
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+6. Risk Factors: 
+- Flag concerns that need attention
+- Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultBedrockAnthropicClaude37Sonnet</primaryModel>
+        <status>Published</status>
+        <templateDataProviders>
+            <definition>invocable://getRelatedList</definition>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>parentRecordId</parameterName>
+                <valueExpression>{!$Input:Account.Id}</valueExpression>
+            </parameters>
+            <parameters>
+                <definition>primitive://String</definition>
+                <isRequired>true</isRequired>
+                <parameterName>relatedListName</parameterName>
+                <valueExpression>Insights__r</valueExpression>
+            </parameters>
+            <referenceName>RelatedList:Account.Insights__r.Records</referenceName>
+        </templateDataProviders>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_29</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__recordSummary</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

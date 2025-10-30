@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This template is grounded with the data from the custom insights object. The data stored in Insights__c retains the product, retention, risk, and annual revenue about customers from custom data models</description>
+    <developerName>Insights_Summary</developerName>
+    <masterLabel>Account Insights Summary</masterLabel>
+    <relatedEntity>Insight__c</relatedEntity>
+    <templateVersions>
+        <content>You are a customer success analyst reviewing insights for {!$Input:Insight__c.Account__r.Name}.
+Analyze the following customer insights and create a customer professional executive summary. 
+
+ACCOUNT Information: 
+{!$Input:Insight__c.Account__r.Name}
+{!$Input:Insight__c.Account__r.Id}
+{!$Input:Insight__c.Account__r.Industry}
+{!$Input:Insight__c.Account__r.OwnerId}
+
+Insight Details:
+{!$Input:Insight__c.Insight_Details__c}
+
+INSTRUCTIONS: 
+Create a concise, professional summary that includes:
+
+1. Executive Overview (2-4 Sentences) 
+-Synthesize the most important takeaways about this customer
+-Highlight overall customer health engagement
+
+2. Key Insights (3-5 bullet points0 
+- Identify the most significant patters
+- Focus on actionable intelligence
+- Note any positive developments or concerns 
+
+3. Sentiment Analysis
+- Provide an overall sentiment assessment
+- Explain the reasoning behind this
+
+4. Recommended Actions (2-4) 
+- Suggest specific next steps based on the insights
+- Prioritize by impact and urgency  
+
+5. Risk Factors: 
+- Flag concerns that need attention
+-Highlight potential churn risks or escalation needs
+
+FORMATTING REQUIREMENTS:
+- Use clear, professional business language
+- Be concise but comprehensive
+- Maintain a consultative, strategic tone
+
+</content>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Insight__c</definition>
+            <referenceName>Input:Insight__c</referenceName>
+            <required>true</required>
+        </inputs>
+        <primaryModel>sfdc_ai__DefaultOpenAIGPT4OmniMini</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>Pa6czaD6HzJf2ADRdRw+sguTxWOQeCeTu014BV2exFI=_1</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__recordSummary</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>
